@@ -6,9 +6,13 @@ const carIcon = document.getElementById("icon_Car")
 const asideDetail = document.querySelector(".product-detail")
 const containerCards = document.querySelector(".cards-container")
 const asideClick = document.querySelector(".product-detail-secondary")
+
+
+
 email.addEventListener('click', toggleMenu)
 
 function toggleMenu() {
+    asideClick.classList.add("inactive")
     mobileMenu.classList.add("inactive")
     asideDetail.classList.add("inactive")
     desktopMenuInteractive.classList.toggle("inactive")
@@ -17,6 +21,7 @@ function toggleMenu() {
 burgerIcon.addEventListener("click" , toggleMobileMenu)
 
 function toggleMobileMenu() {
+    asideClick.classList.add("inactive")
     asideDetail.classList.add("inactive")
     desktopMenuInteractive.classList.add("inactive")
     mobileMenu.classList.toggle("inactive")
@@ -25,6 +30,7 @@ function toggleMobileMenu() {
 carIcon.addEventListener("click" , toggleProductDetail)
 
 function toggleProductDetail() {
+    asideClick.classList.add("inactive")
     desktopMenuInteractive.classList.add("inactive")
     mobileMenu.classList.add("inactive")
     asideDetail.classList.toggle("inactive")
@@ -72,28 +78,28 @@ function productosPedidos(almacenarProductos){
         containerCards.appendChild(divProductCard)
         divProductCard.addEventListener("click" , toggleMostrarProduct)
         function toggleMostrarProduct() {
+            asideClick.innerHTML = 
+            `<div class="product-detail-close-secondary">
+            <img src="./icons/icon_close.png" alt="close">
+            </div>
+            <div class="img-secondary">
+            <img src=${product.img} alt="bike">
+            </div>
+            <div class="product-info-secondary">
+            <p>$${product.price}</p>
+            <p>${product.name}</p>
+            <p>With its practical position, this bike also fulfills a decorative function, add your hall or workspace.</p>
+            <button class="primary-button add-to-cart-button">
+            <img src="./icons/bt_add_to_cart.svg" alt="add to cart">
+            Add to cart
+            </button>
+            </div>`
             asideClick.classList.toggle("inactive")
-            const imgAsideSecondary = document.createElement("img")
-            imgAsideSecondary.setAttribute("src", product.img)
-            const divProductSecondary = document.createElement("div")
-            divProductSecondary.classList.add("product-info-secondary")
-            const price = document.createElement("p")
-            price.innerText = "$" + product.price
-            const name = document.createElement("p")
-            name.innerText = product.name
-            const parrafoProducto = document.createElement("p")
-            parrafoProducto.innerText = `With its practical position, this ${product.name} also fulfills a decorative function, add your hall or workspace`
-            const botonPrimary = document.createElement("button")
-            botonPrimary.classList.add("primary-button add-to-cart-button")
-            const altCart = document.createElement("img")
-            altCart.setAttribute("src", "./icons/bt_add_to_cart.svg")
-            altCart.setAttribute("alt", "add to cart")
-            altCart.innerText = "Add to cart"
-            divProductSecondary.append(price, name, parrafoProducto, botonPrimary)
-            botonPrimary.appendChild(altCart)
-            asideClick.append(imgAsideSecondary, divProductSecondary)
-            
-        }
+            asideDetail.classList.add("inactive")
+            desktopMenuInteractive.classList.add("inactive")
+            mobileMenu.classList.add("inactive")
     }
 }
+}
 productosPedidos(almacenarElectricosProductos)
+

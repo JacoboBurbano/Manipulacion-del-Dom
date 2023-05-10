@@ -279,8 +279,11 @@
   }
 
   /*Product Detail Secondary*/
-
+  .img-secondary img {
+    width: 340px;
+  }
   .product-detail-secondary {
+    background-color: var(--white);
     width: 360px;
     padding-bottom: 24px;
     position: absolute;
@@ -381,5 +384,4 @@
     .mobile-menu {
       display: none;
     }
-    
   }
