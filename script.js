@@ -78,6 +78,11 @@ function productosPedidos(almacenarProductos){
         containerCards.appendChild(divProductCard)
         divProductCard.addEventListener("click" , toggleMostrarProduct)
         function toggleMostrarProduct() {
+            
+            asideClick.classList.remove("inactive")
+            asideDetail.classList.add("inactive")
+            desktopMenuInteractive.classList.add("inactive")
+            mobileMenu.classList.add("inactive")
             asideClick.innerHTML = 
             `<div class="product-detail-close-secondary">
             <img src="./icons/icon_close.png" alt="close">
@@ -94,12 +99,15 @@ function productosPedidos(almacenarProductos){
             Add to cart
             </button>
             </div>`
-            asideClick.classList.toggle("inactive")
-            asideDetail.classList.add("inactive")
-            desktopMenuInteractive.classList.add("inactive")
-            mobileMenu.classList.add("inactive")
+            const closeAside = document.querySelector(".product-detail-close-secondary")
+            closeAside.addEventListener("click", cerrarMenu)
+            function cerrarMenu() {
+                asideClick.classList.add("inactive")
+            }
+            
     }
 }
 }
 productosPedidos(almacenarElectricosProductos)
+
 
